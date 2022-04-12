@@ -24,12 +24,13 @@ module.exports = {
         ],
       },
     },
+    
     {
       resolve: 'gatsby-source-shopify',
       options: {
         shopName: process.env.GATSBY_SHOP_NAME,
         accessToken: process.env.GATSBY_ACCESS_TOKEN,
-        apiVersion: '2020-07',
+        apiVersion: '2021-07',
       },
     },
     `gatsby-plugin-react-helmet`,

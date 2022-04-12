@@ -41,6 +41,7 @@ export function CartContextProvider({ children }) {
     getCheckout();
   }, [setCheckout, setSuccessfulOrder, checkoutId]);
 
+  //call shopify api for product info
   async function getProductById(productId) {
     const product = await client.product.fetch(productId);
     return product;
