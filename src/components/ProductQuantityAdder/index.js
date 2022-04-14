@@ -10,6 +10,7 @@ export function ProductQuantityAdder({ variantId, available }) {
 
   const handleQuantityChange = e => {
     setQuantity(e.currentTarget.value);
+    
   };
 
   const handleSubmit = e => {
@@ -23,6 +24,7 @@ export function ProductQuantityAdder({ variantId, available }) {
       <form onSubmit={handleSubmit}>
         <Input
           disabled={!available}
+          name="productQuantity"
           type="number"
           min="1"
           step="1"

@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Layout, ImageGallery, ProductQuantityAdder, Button } from 'components';
 import { Grid, SelectWrapper, Price } from './styles.js';
-import CartContext from 'context/CartContext.js';
+import CartContext from 'context/CartContext';
 import {navigate, useLocation } from '@reach/router';
 import queryString from 'query-string';
 
@@ -11,20 +11,8 @@ import queryString from 'query-string';
 export const query = graphql `
 query ProductQuery($shopifyId: String){
     shopifyProduct(shopifyId: {eq: $shopifyId}) {
-            shopifyId
-            title
-            description
-            images {
-            id
-            localFile {
-                childImageSharp {
-                 fluid(maxWidth: 300) {
-                    ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-        }
+    ...ShopifyProductFields
+}
 }
 `;
 
@@ -49,7 +37,7 @@ export default function ProductTemplate(props) {
     getProductById,
     setProduct,
     props.data.shopifyProduct.shopifyId,
-    variantId
+    variantId,
   ]);
 
   const handleVariantChange = e => {

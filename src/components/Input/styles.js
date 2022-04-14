@@ -10,6 +10,7 @@ padding: 5px 10px;
 height: 44px;
 box-sizing: border-box;
 min-width: 0;
+
 &:focus {
     border-color: #000000;
 }
