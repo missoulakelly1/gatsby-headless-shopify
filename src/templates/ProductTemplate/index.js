@@ -53,6 +53,7 @@ export default function ProductTemplate(props) {
   
    
     return <Layout>
+      <Button onClick={() => navigate(-1)}>Back to products</Button>
     <Grid>
     <div>
           <h1>{props.data.shopifyProduct.title}</h1>

@@ -6,7 +6,13 @@ export function ProductsGrid({products}) {
  return (
      <ProductsGridWrapper>
          {products.map(product => (
-             <ProductTile imageFluid={product.images[0].localFile.childImageSharp.fluid} key={product.shopifyId} title={product.title}/>
+             <ProductTile imageFluid={product.images[0].localFile.childImageSharp.fluid} 
+             key={product.shopifyId} 
+             minPrice={product.priceRange.minVariantPrice.amount}
+             title={product.title}
+             description={product.description}
+             handle={product.handle}
+             />
          ))}
      </ProductsGridWrapper>
  )
