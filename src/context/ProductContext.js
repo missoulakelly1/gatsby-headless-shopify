@@ -54,11 +54,12 @@ export default ProductContext;
 
 export function ProductContextProvider({ children }) {
   const { allShopifyCollection } =useStaticQuery(query);
+  const { allShopifyProduct } =useStaticQuery(query);
   return (
     <ProductContext.Provider
       value={{
-        products: [],
-        collections: allShopifyCollection.edges.map(({node}) => node),
+        products: allShopifyProduct.edges.map(({ node }) => node) || [],
+        collections: allShopifyCollection.edges.map(({ node }) => node) || [],
       }}
     >
       {children}
