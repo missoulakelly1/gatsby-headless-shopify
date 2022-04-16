@@ -2,30 +2,48 @@ import React from 'react';
 import { graphql, useStaticQuery } from "gatsby";
 
 const query = graphql`
- {
-  allShopifyCollection {
-    edges {
-      node {
-        title
-        description
-        shopifyId
-        image {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200){
-                ...GatsbyImageSharpFluid_withWebp
+  fragment ProductTileFields on ShopifyProduct {
+    handle
+    priceRange {
+      minVariantPrice {
+        amount
+      }
+    }
+  }
+  {
+    allShopifyProduct {
+      edges {
+        node {
+          ...ShopifyProductFields
+          ...ProductTileFields
+        }
+      }
+    }
+    allShopifyCollection(sort: { fields: title, order: ASC }) {
+      edges {
+        node {
+          products {
+            ...ShopifyProductFields
+            ...ProductTileFields
+          }
+          title
+          description
+          shopifyId
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
               }
             }
           }
         }
-        products {
-          ...ShopifyProductFields
-        }
       }
     }
   }
-}
-`
+`;
+
 
 const defaultState = {
   products: [],
