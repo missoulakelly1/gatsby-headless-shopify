@@ -7,10 +7,10 @@ export const CheckboxWrapper = styled.div`
   border-radius: 4px;
   cursor: pointer;
   display: flex;
-  //background: ${props => (props.checked ? 'black' : 'none')};
+  background: ${props => (props.checked ? 'black' : 'none')};
   > div {
     line-height: 1;
     margin: auto;
-    //visibility: ${props => (props.checked ? 'visible' : 'hidden')};
+    visibility: ${props => (props.checked ? 'visible' : 'hidden')};
   }
 `;
