@@ -1,7 +1,9 @@
 import React from "react";
-import { Layout, Filters } from "components";
+import { Layout, Filters, ProductsGrid } from "components";
 import ProductContext from "../context/ProductContext";
 import styled from "styled-components";
+import queryString from 'query-string';
+import { useLocation } from '@reach/router';
 
 export const Content = styled.div`
     display: grid;
@@ -12,14 +14,46 @@ export const Content = styled.div`
 
 export default function AllProducts(){
     const { products, collections } = React.useContext(ProductContext);
-    console.log(products);
+    const collectionProductMap = {};
+    const { search } = useLocation();
+  const qs = queryString.parse(search);
+  const selectedCollectionIds = qs.c?.split(',').filter(c => !!c) || [];
+  const selectedCollectionIdsMap = {};
+  const searchTerm = qs.s;
+
+    if (collections) {
+        collections.forEach(collection => {
+          collectionProductMap[collection.shopifyId] = {};
+    
+          collection.products.forEach(product => {
+            collectionProductMap[collection.shopifyId][product.shopifyId] = true;
+          });
+        });
+      }
+
+      const filterByCategory = product => {
+        if (Object.keys(selectedCollectionIdsMap).length) {
+          for (let key in selectedCollectionIdsMap) {
+            if (collectionProductMap[key]?.[product.shopifyId]) {
+              return true;
+            }
+          }
+          return false;
+        }
+    
+        return true;
+      };
+
+    const filteredProducts = products.filter(filterByCategory);
     return (
         <Layout>
-        <h4>{products.length} products</h4>
+        <h4>{filteredProducts.length} products</h4>
         <Content>
             <Filters />
 
-        
+        <div>
+            <ProductsGrid products={filteredProducts} />
+        </div>
         </Content>
         </Layout>
     )
