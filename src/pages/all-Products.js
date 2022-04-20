@@ -21,6 +21,10 @@ export default function AllProducts(){
   const selectedCollectionIdsMap = {};
   const searchTerm = qs.s;
 
+    selectedCollectionIds.forEach(collectionId => {
+      selectedCollectionIdsMap[collectionId] = true;
+  });
+
     if (collections) {
         collections.forEach(collection => {
           collectionProductMap[collection.shopifyId] = {};
