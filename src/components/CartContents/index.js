@@ -18,12 +18,14 @@ export function CartContents() {
   return (
     <section>
       <h1>Your cart</h1>
-     <CartHeader>
-       <div>Product</div>
-       <div>Unit Price</div>
-       <div>Quantity</div>
-       <div>Amount</div>
-     </CartHeader>
+      {!!checkout?.lineItems && (
+        <CartHeader>
+          <div>Product</div>
+          <div>Unit price</div>
+          <div>Quantity</div>
+          <div>Amount</div>
+        </CartHeader>
+      )}
       {checkout?.lineItems?.map(item => (
         <CartItem key={item.variant.id}>
           <div>
@@ -51,7 +53,22 @@ export function CartContents() {
         </CartFooter>
       )}
       {!checkout?.lineItems && <h4>You cart is empty.</h4>}
-      
+      <Footer>
+        <div>
+          <Button onClick={() => navigate(-1)}>Continue shopping</Button>
+        </div>
+        <div>
+          {!!checkout?.webUrl && (
+            <Button
+              onClick={() => {
+                window.location.href = checkout.webUrl;
+              }}
+            >
+              Checkout
+            </Button>
+          )}
+        </div>
+      </Footer>
     </section>
   );
 }
