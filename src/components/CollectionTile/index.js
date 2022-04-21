@@ -21,7 +21,7 @@ export function CollectionTile({
     <CollectionTileContent>
     <Title sale={sale}>{title}</Title>
     <Description sale={sale}>{description}</Description>
-
+    <StyledLink to={destination}>Shop Now</StyledLink>
     </CollectionTileContent>
   </CollectionTileWrapper>
   );

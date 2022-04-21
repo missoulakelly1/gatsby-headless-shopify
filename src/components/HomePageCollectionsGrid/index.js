@@ -1,6 +1,7 @@
 import React from "react";
 import  {CollectionTile}  from 'components/CollectionTile';
 import {RemainingCollections} from './styles';
+import { StyledLink } from '../StyledLink';
 
 export function HomePageCollectionsGrid({collections}) {
     const saleCollection = collections?.find(

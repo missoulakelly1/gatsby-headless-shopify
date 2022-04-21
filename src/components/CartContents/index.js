@@ -52,7 +52,7 @@ export function CartContents() {
           </div>
         </CartFooter>
       )}
-      {!checkout?.lineItems && <h4>You cart is empty.</h4>}
+      {!checkout?.lineItems && <h4>Your cart is empty.</h4>}
       <Footer>
         <div>
           <Button onClick={() => navigate(-1)}>Continue shopping</Button>
