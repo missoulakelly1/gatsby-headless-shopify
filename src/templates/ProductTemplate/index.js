@@ -52,7 +52,9 @@ export default function ProductTemplate(props) {
   };
   
    
-    return <Layout>
+    return (
+    <Layout>
+      <SEO description={props.data.shopifyProduct.description} title={props.data.shopifyProduct.title} />
       <Button onClick={() => navigate(-1)}>Back to products</Button>
     <Grid>
     <div>
@@ -93,5 +95,6 @@ export default function ProductTemplate(props) {
     </div>
     </Grid>
     </Layout>
+    )
     ;
 }

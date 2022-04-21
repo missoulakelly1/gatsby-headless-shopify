@@ -7,6 +7,7 @@ const IndexPage = () => {
   console.log(collections);
   return (
   <Layout>
+    <SEO title="Home Page" description="The madhatter store home page" />
    <HomePageCollectionsGrid
         collections={
           collections.filter(
