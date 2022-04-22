@@ -44,7 +44,6 @@ const query = graphql`
   }
 `;
 
-
 const defaultState = {
   products: [],
 };
@@ -53,8 +52,8 @@ const ProductContext = React.createContext(defaultState);
 export default ProductContext;
 
 export function ProductContextProvider({ children }) {
-  const { allShopifyCollection } = useStaticQuery(query);
-  const { allShopifyProduct } = useStaticQuery(query);
+  const { allShopifyCollection, allShopifyProduct } = useStaticQuery(query);
+
   return (
     <ProductContext.Provider
       value={{
