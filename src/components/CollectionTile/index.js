@@ -19,9 +19,11 @@ export function CollectionTile({
     <CollectionTileWrapper>
     <BackgroundImage fluid={backgroundImage} />
     <CollectionTileContent>
+    <div>
     <Title sale={sale}>{title}</Title>
     <Description sale={sale}>{description}</Description>
     <StyledLink to={destination}>Shop Now</StyledLink>
+    </div>
     </CollectionTileContent>
   </CollectionTileWrapper>
   );
