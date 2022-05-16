@@ -8,7 +8,7 @@ export function ProductTile({
     imageFluid, 
     description, 
     minPrice, 
-    handle }){
+    handle, }){
     return (
         <ProductTileWrapper>
             <Img fluid={imageFluid} />
@@ -17,7 +17,7 @@ export function ProductTile({
            <Price>
                from ${parseFloat(minPrice).toFixed(2)}
            </Price>
-           <StyledLink to={`products/${handle}`}
+           <StyledLink to={`/products/${handle}`}
            
            >View Product</StyledLink>
             </ProductTileWrapper>

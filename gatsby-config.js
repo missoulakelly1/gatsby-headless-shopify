@@ -3,10 +3,14 @@ require('dotenv').config({
 });
 
 module.exports = {
+  flags: {
+    DEV_SSR: false
+  },
   siteMetadata: {
     title: `MadHatter Store`,
     description: `We're mad about hats`,
     author: `@kmh`,
+    
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -54,6 +58,7 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`,
       },
+      
     },
   ],
 };
